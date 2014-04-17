@@ -94,11 +94,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-	'/vagrant/weparty/static',
+	os.path.join(BASE_DIR, 'static'),
 )
 
 AUTH_USER_MODEL = 'users.User'
 
 TEMPLATE_DIRS = (
-	'/vagrant/weparty/weparty/templates',
+	os.path.join(BASE_DIR, 'templates'),
 )
