@@ -1,0 +1,19 @@
+{% extends "_layouts/base.html" %}
+
+{% load url from future %}
+
+{% block page_title %}{{ item.name }} | {% endblock %}
+
+{% block page_content %}
+
+	<h2>{{ item.name }}</h2>
+	
+	{{ item.description|linebreaks }}
+	
+	<p>{{ item.updated_at }}</p>
+	
+	<p><a href="/items/edit/{{ item.slug }}/">Edit</a></p>
+	
+	<p><a href="{% url 'items:list' %}">&larr; Item list</a>
+
+{% endblock %}

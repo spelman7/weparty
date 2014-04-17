@@ -1,0 +1,17 @@
+{% extends "_layouts/base.html" %}
+
+{% block page_title %}Items | {% endblock %}
+
+{% block page_content %}
+<h2>Party Items</h2>
+
+<ul>
+	{% for item in item_list %}
+	<li><a href="{{ item.get_absolute_url }}">{{ item.name }}</a> (<a href="edit/{{ item.slug }}/">Edit</a>)</li>
+	{% empty %}
+	<li>Sorry, no items listed right now. Check back soon!</li>
+	{% endfor %}
+</ul>
+
+<p><a class="btn btn-large" href="{% url 'items:create' %}">Add an item</a></p>
+{% endblock %}

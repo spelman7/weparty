@@ -15,6 +15,7 @@ class UserManager(BaseUserManager):
 		)
 		
 		user.set_password(password)
+		user.is_active = True
 		user.save(using=self._db)
 		return user
 	
@@ -25,6 +26,9 @@ class UserManager(BaseUserManager):
 		user.is_active = True
 		user.save(using=self._db)
 		return user
+	
+	def active(self):
+		return self.model.objects.filter(is_active=True)
 		
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -47,3 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	@property
 	def is_staff(self):
 		return self.is_superuser
+	
+	@models.permalink
+	def get_absolute_url(self):
+		return ("users:detail", (), {"pk": self.pk})

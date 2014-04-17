@@ -42,6 +42,7 @@ THIRD_PARTY_APPS = ()
 
 LOCAL_APPS = (
 	'users',
+	'items',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -93,4 +94,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+	'/vagrant/weparty/static',
+)
+
 AUTH_USER_MODEL = 'users.User'
+
+TEMPLATE_DIRS = (
+	'/vagrant/weparty/weparty/templates',
+)

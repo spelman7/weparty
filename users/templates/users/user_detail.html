@@ -1,0 +1,17 @@
+{% extends "_layouts/base.html" %}
+
+{% load url from future %}
+
+{% block page_title %}{{ user.email }} | {% endblock %}
+
+{% block page_content %}
+
+	<h2>{{ user.name }}</h2>
+	
+	<p>{{ user.email }}</p>
+	
+	<p><a href="/users/edit/{{ user.pk }}/">Edit</a></p>
+	
+	<p><a href="{% url 'users:list' %}">&larr; User list</a>
+
+{% endblock %}

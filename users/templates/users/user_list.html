@@ -1,0 +1,17 @@
+{% extends "_layouts/base.html" %}
+
+{% block page_title %}Items | {% endblock %}
+
+{% block page_content %}
+<h2>WeParty Users</h2>
+
+<ul>
+	{% for user in user_list %}
+	<li><a href="{{ user.get_absolute_url }}">{{ user.email }}</a> (<a href="edit/{{ item.pk }}/">Edit</a>)</li>
+	{% empty %}
+	<li>Sorry, no items listed right now. Check back soon!</li>
+	{% endfor %}
+</ul>
+
+<p><a class="btn btn-large" href="{% url 'users:create' %}">Create a user</a></p>
+{% endblock %}
