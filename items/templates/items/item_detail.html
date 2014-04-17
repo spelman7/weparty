@@ -10,10 +10,14 @@
 	
 	{{ item.description|linebreaks }}
 	
+	<p>{{ item.owner }}</p>
+	
 	<p>{{ item.updated_at }}</p>
 	
 	<p><a href="/items/edit/{{ item.slug }}/">Edit</a></p>
 	
 	<p><a href="{% url 'items:list' %}">&larr; Item list</a>
+	
+	<p><a href="/dashboard">&larr; Dashboard</a>
 
 {% endblock %}
