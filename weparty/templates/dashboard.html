@@ -3,46 +3,50 @@
 {% load url from future %}
 
 {% block page_content %}
-	
+
 	<header class="jumbotron subhead marketing_pad" id="overview">
   		<div class="container">
+					<p><a class="btn btn-large" href="/users/logout">Logout</a></p>
     			<h1>Let's Start the (We)Party, {{ user.name }}</h1>
     			<p class="lead">List some items for people to rent!.</p>
   		</div>
 	</header>
 
 	<div class="container marketing">
-	
+
 		<div class="row">
-    		<div class="span4">
-    			<img class="img-circle" src="http://placehold.it/140x140">
-    			<h2>List an item!</h2>
-    			<p>For a full list of party supplies we accept on our listings, see here(link)!</p>
-    			<p><a class="btn btn-large" href="/items/create">List Item &raquo;</a></p>
-    			
-    		</div>
-    		<div class="span8">
-    			{% if item_list %}
-    			<h3>Current items listed:</h3>
-    				<table class="table">
-    					<tr>
-    						<th>Item Name</th>
-    						<th>View</th>
-    						<th>Edit</th>
-    					</tr>
-    					{% for i in item_list %}
-    					<tr class="success">
-    						<td>{{ i.slug }}</td>
-    						<td><a href="/items/{{ i.slug }}">&#9658;</a></td>
-    						<td><a href="/items/edit/{{ i.slug }}">&#9658;</a></td>
-    					</tr>
-    					{% endfor %}
-    				</table>
-    			{% else %}
-    			{% endif %}
-    		</div>
+    	<div class="span4">
+    		<img class="img-circle" src="http://placehold.it/200x140">
+    		<h2>List an item, bozo!</h2>
+    		<p>For a full list of party supplies we accept on our listings, see here(link)!</p>
+    		<p><a class="btn btn-large" href="/items/create">List Item &raquo;</a></p>
     	</div>
-    
+    	<div class="span8">
+    		{% if item_list %}
+    		<h3>Current items listed:</h3>
+    			<table class="table">
+    				<tr>
+    					<th>Item Name</th>
+    					<th>View</th>
+    					<th>Edit</th>
+    				</tr>
+    				{% for i in item_list %}
+    				<tr class="success">
+    					<td>{{ i.slug }}</td>
+    					<td><a href="/items/{{ i.slug }}">&#9658;</a></td>
+    					<td><a href="/items/edit/{{ i.slug }}">&#9658;</a></td>
+    				</tr>
+    				{% endfor %}
+    			</table>
+    		{% else %}
+    		{% endif %}
+    	</div>
     </div>
+	</div>
+	<div class="row">
+		<form method="post">{% csrf_token %}
+			<button class="btn btn-large btn-success" type="submit">Submit</button>
+		</form>
+	</div>
 
 {% endblock %}

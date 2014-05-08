@@ -40,7 +40,9 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
 )
 
-THIRD_PARTY_APPS = ()
+THIRD_PARTY_APPS = (
+  'south',
+)
 
 LOCAL_APPS = (
 	'users',
@@ -104,3 +106,5 @@ AUTH_USER_MODEL = 'users.User'
 TEMPLATE_DIRS = (
 	os.path.join(BASE_DIR, 'templates'),
 )
+
+LOGIN_URL = '/users/login'

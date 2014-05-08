@@ -4,7 +4,7 @@
 {% block page_content %}
 
 	<form method="post">{% csrf_token %}
-		<h2 class="form-signin-heading">User Form</h2>
+		<h2 class="form-signin-heading">Create New Account</h2>
 		{% for field in form %}
 			<div>
 				{{ field.errors }}
@@ -14,7 +14,7 @@
 		{% endfor %}
 		<button class="btn btn-large btn-success" type="submit">Submit</button>
 	</form>
-	
+
 	{{ field.errors }}
 
 {% endblock %}

@@ -10,24 +10,24 @@ from .forms import UserCreationForm, UserChangeForm
 class CustomUserAdmin(UserAdmin):
 	form = UserChangeForm
 	add_form = UserCreationForm
-	
+
 	list_display = ('email', 'name', 'is_superuser')
 	list_filter = ('is_superuser',)
-	
+
 	fieldsets = (
 		(None, {'fields': {
-			'email', 'name', 'password', 'is_superuser', 'is_active'
+			'email', 'name', 'password', 'is_superuser', 'is_active', 'wepayUserId', 'wepayAccountId', 'wepayAccessToken'
 		}}),
 		('Groups', {'fields': {'groups',}})
 	)
-	
+
 	add_fieldsets = (
 		(None, {
 			'classes': ('wide',),
 			'fields': {'email', 'name', 'password1', 'password2'}
 	}),
 	)
-	
+
 	search_fields = ('email', 'name')
 	ordering = ('email',)
 	filter_horizontal = ('groups',)
