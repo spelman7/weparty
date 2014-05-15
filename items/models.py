@@ -18,15 +18,18 @@ class Item(models.Model):
 
 	class Meta:
 		ordering = ["-created_at", "name"]
-	
+
 	def __unicode__(self):
 		return self.name
-	
+
 	def save(self, *args, **kwargs):
 		if not self.slug:
 			self.slug = slugify(self.name)
 		super(Item, self).save(*args, **kwargs)
-	
+
 	@models.permalink
 	def get_absolute_url(self):
 		return ("items:detail", (), {"slug": self.slug})
+
+class Image(models.Model):
+	docfile = models.FileField(upload_to='images/%Y/%m/%d')
