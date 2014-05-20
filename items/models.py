@@ -31,5 +31,8 @@ class Item(models.Model):
 	def get_absolute_url(self):
 		return ("items:detail", (), {"slug": self.slug})
 
+DEFAULT_ITEM_KEY = 1
+
 class Image(models.Model):
 	docfile = models.FileField(upload_to='images/%Y/%m/%d')
+	item = models.ForeignKey(Item, related_name="images", default=DEFAULT_ITEM_KEY)

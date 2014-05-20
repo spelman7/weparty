@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Item
+from .models import Item, Image
 
 class ItemAdmin(admin.ModelAdmin):
 	date_heirarchy = "created_at"
@@ -11,5 +11,10 @@ class ItemAdmin(admin.ModelAdmin):
 	list_filter = ["published", "updated_at", "owner"]
 	prepopulated_fields = {"slug": ("name",)}
 	search_field = ["name", "description"]
-	
+
+class ImageAdmin(admin.ModelAdmin):
+	fields = ("docfile", "item")
+
 admin.site.register(Item, ItemAdmin)
+
+admin.site.register(Image, ImageAdmin)

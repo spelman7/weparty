@@ -2,3 +2,4 @@
 .DS_Store
 weparty.esproj/
 weparty/settings/local.py
+weparty/media/images

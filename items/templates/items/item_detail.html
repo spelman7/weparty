@@ -28,20 +28,20 @@
 </div>
 {% endif %}
 
-	<h2>{{ item.name }}</h2>
+	<h2>Item: {{ item_name }}</h2>
 
-	{{ item.description|linebreaks }}
+	<p>Description: {{ item_description }}</p>
 
-	<p>{{ item.owner }}</p>
+	<p>Owner Email: {{ item_owner }}</p>
 
-	<p>{{ item.updated_at }}</p>
+	<p>Uploaded: {{ item_updated }}</p>
 
 	<p><a href="/items/edit/{{ item.slug }}/">Edit</a></p>
 
 	{% if images %}
 		<ul>
 		{% for image in images %}
-			<li><a href="{{ image.docfile.url }}">{{ image.docfile.name }}</a></li>
+			<a href=" {{ image.docfile.url }}"><img src="{{ image.docfile.url }}" /></a>
 		{% endfor %}
 		</ul>
 	{% else %}

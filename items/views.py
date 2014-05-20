@@ -37,13 +37,21 @@ class ItemDetailView(PublishedItemMixin, DetailView):
 	model = Item
 
 	def get(self, request, *args, **kwargs):
-		images = Image.objects.all()
 		form = ImageForm()
-		return render(request, 'items/item_detail.html', {'images': images, 'form': form})
+		slug_lookup = self.kwargs.get('slug')
+		item = Item.objects.get(slug=slug_lookup)
+		images = Image.objects.filter(item=item)
+		item_name = item.name
+		item_owner = item.owner
+		item_description = item.description
+		item_updated = item.updated_at
+		return render(request, 'items/item_detail.html', {'images': images, 'form': form, 'item_name': item_name, 'item_owner': item_owner, 'item_description': item_description, 'item_updated': item_updated})
 
 	def post(self, request, *args, **kwargs):
+		slug_lookup = self.kwargs.get('slug')
+		item = Item.objects.get(slug=slug_lookup)
 		form = ImageForm(request.POST, request.FILES)
 		if form.is_valid():
-			newdoc = Image(docfile = request.FILES['docfile'])
+			newdoc = Image(docfile = request.FILES['docfile'], item = item)
 			newdoc.save()
 			return HttpResponseRedirect('/dashboard')
